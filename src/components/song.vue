@@ -2,8 +2,8 @@
   <div>
     <h3>{{ song.singer }}</h3>
     <h4>{{ song.title}}</h4>
-    <button @click="addSong" id="add" v-if="!isInplayList">add</button>
-    <button @click="deleteSong" id="delete" v-else>delete</button>
+    <button @click="addSong(song)" id="add" v-if="!isInplayList">add</button>
+    <button @click="deleteSong(song)" id="delete" v-else>delete</button>
   </div>
 </template>
 
@@ -21,11 +21,11 @@ export default {
     }
   },
   methods: {
-    addSong: function() {
-      this.$store.dispatch("addSong", this.song);
+    addSong: function(song) {
+      this.$store.dispatch("addSong", song);
     },
-    deleteSong: function() {
-      this.$store.dispatch("deleteSong", this.song);
+    deleteSong: function(song) {
+      this.$store.dispatch("deleteSong", song);
     }
   }
 };

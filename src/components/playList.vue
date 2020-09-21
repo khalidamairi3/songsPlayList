@@ -11,10 +11,10 @@ export default {
   components: {
     songItem
   },
-  data: function() {
-    return {
-      songs: this.$store.state.playListSongs
-    };
+  computed: {
+    songs: function() {
+      return this.$store.state.playListSongs;
+    }
   }
 };
 </script>
