@@ -1,6 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
+
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -18,17 +20,17 @@ export default new Vuex.Store({
     updateAdd: function (state, addedSong) {
 
       state.playListSongs.push(addedSong);
-      for (let i = 0; i < state.songs.length; i++) {
-        if (state.songs[i] == addedSong)
-          state.songs.splice(i, 1)
-      }
+      state.songs=state.songs.filter(function(song){
+        return song != addedSong;
+      })
+   
     },
+   
     updateDelete: function (state, deletedSong) {
       state.songs.push(deletedSong);
-      for (let i = 0; i < state.playListSongs.length; i++) {
-        if (state.playListSongs[i] == deletedSong)
-          state.playListSongs.splice(i, 1)
-      }
+      state.playListSongs=state.playListSongs.filter(function(song){
+        return song != deletedSong;
+      })
     }
   },
   actions: {
